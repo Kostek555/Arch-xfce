@@ -26,6 +26,10 @@ echo "KEYMAP=pl" > /etc/vconsole.conf
 
 ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
+
 hwclock --utc --systohc
 timedatectl set-ntp true
 
@@ -33,18 +37,24 @@ timedatectl set-ntp true
 
 pacman -S grub --noconfirm
 
-grub-install /dev/sda
+grub-install /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# NETWORK
+
+pacman -S networkmanager network-manager-applet dialog wpa_supplicant mtools base-devel linux-headers --noconfirm
+
+systemctl enable NetworkManager
 
 # DESKTOP
 
-pacman -S xorg-server xorg-xrandr xorg-xinit xorg-xclock xorg-xbacklight xorg-xrdb xorg-xrefresh xorg-xkill xorg-xgamma --noconfirm 
+pacman -S xorg xterm xorg-twm xorg-xclock gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-google ntfs-3g gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-google lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings vim sudo --noconfirm
 
-pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings partitionmanager breeze breeze-iconsarc-gtk-theme arc-icon-theme gtk-engine-murrine firefox firefox-i18n-pl chromium --noconfirm
+systemctl enable lightdm
 
-pacman -S sudo nano bash-completions ntfs-3g leafpad arch-install-scripts xdg-user-dirs --noconfirm
+pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa chromium file-roller unrar p7zip unace lrzip leafpad arch-install-scripts bash-completion mtools dosfstools xdg-user-dirs xdg-utils acpi acpi_call  terminus-font ttf-inconsolata gparted util-linux arc-gtk-theme arc-icon-theme gtk-engine-murrine leafpad  jre-openjdk jdk-openjdk --noconfirm
 
-pacman -S gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-google util-linux --noconfirm
+systemctl enable fstrim.timer
 
 pacman -S linux-headers --noconfirm
 
@@ -54,24 +64,7 @@ pacman -S ttf-dejavu ttf-liberation ttf-inconsolata --noconfirm
 
 pacman -S file-roller unrar p7zip unace lrzip mtools gparted --noconfirm
 
-# SERVICES
 
-systemctl enable lightdm
-systemctl enable NetworkManager
-systemctl enable fstrim.timer
-
-# DRIVERS INTEL
-
-pacman -S xf86-video-intel intel-ucode libva-intel-driver libva-mesa-driver mesa vulkan-intel vulkan-tools gst-libav --noconfirm
-
-# USER
-
-useradd -m -g users -G wheel,storage,power,video -s /bin/bash greg
-
-# PASSWORD
-
-echo -e "root\root" | passwd
-echo -e "greg\greg" | passwd gred
 
 # SUDO
 
