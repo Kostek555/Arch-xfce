@@ -20,7 +20,7 @@ echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 # GRUB
 
 pacman -S grub efibootmgr --noconfirm
-grub-install /dev/sdd
+grub-install /dev/sdc
 grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
 grub-mkconfig -o /boot/grub/grub.cfg
 
