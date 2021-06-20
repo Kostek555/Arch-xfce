@@ -56,7 +56,7 @@ pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call term
 
 pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine leafpad jre-openjdk jdk-openjdk vim sudo chromium --noconfirm
 
-pacman -S file-roller unrar p7zip unace lrzip mtools gparted --noconfirm
+pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl --noconfirm
 
 pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl --noconfirm
 
