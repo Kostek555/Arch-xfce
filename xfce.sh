@@ -20,7 +20,6 @@ echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc --utc
 
-
 # --------Grub---------------------
 
 pacman -S grub efibootmgr --noconfirm
@@ -44,7 +43,7 @@ systemctl enable lightdm
 
 #--------Network------------------
 
-pacman -S networkmanager network-manager-applet dialog wpa_supplicant  --noconfirm
+pacman -S networkmanager network-manager-applet --noconfirm
 
 systemctl enable NetworkManager
 
@@ -56,7 +55,7 @@ pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call term
 
 pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine leafpad jre-openjdk jdk-openjdk vim sudo chromium --noconfirm
 
-pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl --noconfirm
+pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant --noconfirm
 
 pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl --noconfirm
 
