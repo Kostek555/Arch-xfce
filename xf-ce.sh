@@ -39,7 +39,7 @@ pacman -S grub efibootmgr --noconfirm
 grub-install /dev/sdd
 grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
 grub-mkconfig -o /boot/grub/grub.cfg
-grub-mkconfig -o /boot/grub/grub.cfg
+
 
 
 # NETWORK

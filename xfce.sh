@@ -17,6 +17,16 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
 
+# GRUB
+
+pacman -S grub efibootmgr --noconfirm
+grub-install /dev/sdd
+grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+
 pacman -S networkmanager network-manager-applet dialog wpa_supplicant mtools base-devel linux-headers --noconfirm
 
 systemctl enable NetworkManager
