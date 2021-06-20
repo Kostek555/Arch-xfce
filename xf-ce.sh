@@ -56,7 +56,6 @@ pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa chromium file-roller u
 
 systemctl enable fstrim.timer
 
-pacman -S linux-headers --noconfirm
 
 # FONTS
 
