@@ -66,6 +66,10 @@ systemctl enable reflector.timer
 
 pacman -S linux-headers --noconfirm
 
+# SUDO
+
+sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+
 #=========================
 cd .. 
 
