@@ -21,10 +21,10 @@ ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc --utc
 
 # --------Grub---------------------
-
-pacman -S grub efibootmgr --noconfirm
-grub-install /dev/sdc
-grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
+pacman -S grub  --noconfirm
+#pacman -S grub efibootmgr --noconfirm
+grub-install --target=i386-pc /dev/sda 
+#grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #--------Xorg----------------------
@@ -71,7 +71,7 @@ pacman -S linux-headers --noconfirm
 sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 
 #=========================
-cd .. 
+
 
 printf "\e[1;32mDone! Type exit, umount -R /mnt and reboot.\e[0m"
 
