@@ -53,7 +53,7 @@ pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa file-roller unrar p7zi
 
 pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call terminus-font ttf-inconsolata util-linux --noconfirm
 
-pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine leafpad jre-openjdk jdk-openjdk vim sudo chromium --noconfirm
+pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine leafpad jre-openjdk jdk-openjdk vim sudo chromium net-tools --noconfirm
 
 pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant --noconfirm
 
@@ -64,7 +64,7 @@ systemctl enable reflector.timer
 
 #---------linux-headers---------
 
-pacman -S linux-headers --noconfirm
+pacman -S linux-lts-headers --noconfirm
 
 # SUDO
 
