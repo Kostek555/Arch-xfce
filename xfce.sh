@@ -73,5 +73,5 @@ sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' 
 #=========================
 
 
-printf "\e[1;32mDone! Type exit, umount -R /mnt and reboot.\e[0m"
+printf "\e[1;31mDone! Type exit, umount -R /mnt and reboot.\e[0m"
 
