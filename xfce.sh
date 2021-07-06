@@ -29,7 +29,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 #--------Xorg----------------------
 
-pacman -S xorg xterm xorg-twm xorg-xclock --noconfirm
+pacman -S xorg xorg-xinit xterm xorg-xeyes xorg-xclock --noconfirm
+
+#----------------Video-------------------------------------------
+
+pacman -S xf86-video-intel xf86-video-nouveau --noconfirm
+pacman -S nvidia nvidia-utils --noconfirm
 
 #----------System---------------
 
