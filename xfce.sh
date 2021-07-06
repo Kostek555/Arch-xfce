@@ -22,8 +22,8 @@ hwclock --systohc --utc
 
 # --------Grub---------------------
 pacman -S grub  --noconfirm
+grub-install --target=i386-pc /dev/sda
 #pacman -S grub efibootmgr --noconfirm
-grub-install --target=i386-pc /dev/sda 
 #grub-install --target=x86_64-efi --efi-directory /boot --boot-directory /boot --removabl
 grub-mkconfig -o /boot/grub/grub.cfg
 
