@@ -22,7 +22,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 #--------Xorg----------------------
 
-pacman -S xorg-server xorg-xrandr xorg-xinit xorg-xclock xorg-xbacklight xorg-xrdb xorg-xrefresh xorg-xkill xorg-xgamma --noconfirm 
+pacman -S xorg-server xorg-apps --noconfirm 
 
 #----------------Video-nouveau-----------------------------------------
 
