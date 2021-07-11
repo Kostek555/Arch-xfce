@@ -21,7 +21,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 #--------Xorg----------------------
 
-pacman -S xorg-server xorg-apps --noconfirm 
+pacman -S xorg-server xorg-apps xorg-xinit --noconfirm 
 
 #----------------Video-intel-----------------------------------------
 
@@ -76,6 +76,17 @@ systemctl enable fstrim.timer
 #---------linux-headers---------
 
 pacman -S linux-headers --noconfirm
+
+#-----------------------------------
+cat <<EOF > /etc/X11/xorg.conf.d/keyboard.conf
+Section "InputClass"
+    Identifier             "Keyboard Defaults"
+    MatchIsKeyboard        "yes"
+    Option                 "XkbLayout" "pl"
+EndSection
+EOF
+
+#-----------------------------------------------
 
 # SUDO
 
