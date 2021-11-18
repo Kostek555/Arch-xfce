@@ -76,7 +76,7 @@ pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper pa
 
 pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant rsync --noconfirm
 
-pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils --noconfirm
+pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils iwd nomacs --noconfirm
 
 systemctl enable fstrim.timer
 systemctl enable reflector.timer
