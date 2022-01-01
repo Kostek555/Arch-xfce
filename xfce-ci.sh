@@ -5,7 +5,7 @@
 pacman -Sy
 pacman -S reflector --noconfirm
 
-reflector --verbose --country Poland -l 5 -p http --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 #---------Loaltime-------------------------
 
@@ -19,12 +19,7 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
 ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
-hwclock --systohc --utc
-
-# --------Grub---------------------
-pacman -S grub  --noconfirm
-grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+hwclock --systohc
 
 #--------Xorg----------------------
 
@@ -60,27 +55,10 @@ pacman -S  lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
 
 systemctl enable lightdm
 
-#--------Network------------------
-
-pacman -S networkmanager network-manager-applet --noconfirm
-
-systemctl enable NetworkManager
 
 #-----------Xfce------------------
 
-pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa  arch-install-scripts --noconfirm
-
-pacman -S bash-completion  --noconfirm
-
-pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme leafpad firefox --noconfirm
-
-pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant rsync --noconfirm
-
-<<<<<<< HEAD
-pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils iwd nomacs --noconfirm
-=======
-pacman -S intel-ucode libreoffice-fresh-pl  gnome-calculator  nomacs --noconfirm
->>>>>>> 327c5a7 (add xfce-ci)
+pacman -S xfce4 xfce4-goodies pipewire pipewire-pulse  arch-install-scripts bash-completion arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme leafpad firefox file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant rsync intel-ucode libreoffice-fresh-pl  gnome-calculator  nomacs --noconfirm
 
 #systemctl enable fstrim.timer
 #systemctl enable reflector.timer
@@ -98,16 +76,6 @@ Section "InputClass"
 EndSection
 EOF
 
-#-----------------------------------------------
-
-# SUDO
-
-sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
-
-#-------------pikaur--------
-git clone https://aur.archlinux.org/paru.git
-cd paru/
-makepkg -si --noconfirm
 #---------------------------------------------
 
 cd .. && rm -rf Arch-xfce
