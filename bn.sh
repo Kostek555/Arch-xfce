@@ -19,7 +19,7 @@ install_x(){ return 0; }     # return 0 if you want to install X
 use_lvm(){ return 0; }       # return 0 if you want lvm
 use_crypt(){ return 0; }     # return 0 if you want crypt 
 use_bcm4360() { return 1; }  # return 0 if you want bcm4360
-use_nonus_keymap(){ return 1; } # return 0 if using non-US keyboard keymap (default)
+use_nonus_keymap(){ return 0; } # return 0 if using non-US keyboard keymap (default)
 default_keymap='pl'             # set to your keymap name
 
 $(use_nonus_keymap()) && loadkeys "${default_keymap}"
@@ -99,7 +99,7 @@ TIME_ZONE="$(wget -qO - http://geoip.ubuntu.com/lookup | sed -n -e 's/.*<TimeZon
 TIME_ZONE=${TIME_ZONE:="Europe/Warsaw"}   # Set a default value
 LOCALE="pl_PL.UTF-8"
 FILESYSTEM=ext4
-DESKTOP=('cinnamon' 'nemo-fileroller' 'lightdm-gtk-greeter')
+DESKTOP=('xfce' 'nemo-fileroller' 'lightdm-gtk-greeter')
 declare -A DISPLAY_MGR=( [dm]='lightdm' [service]='lightdm.service' )
 
 if $(use_bcm4360) ; then
@@ -115,42 +115,30 @@ fi
 BASE_SYSTEM=( base base-devel linux linux-headers linux-firmware dkms vim iwd archlinux-keyring )
 
 ## These are packages required for a working Xorg desktop
-BASIC_X=( xorg-server xorg-xinit mesa xorg-twm xterm gnome-terminal xfce4-terminal xorg-xclock "${DESKTOP[@]}" ${DISPLAY_MGR[dm]} firefox )
+BASIC_X=( xorg-server xorg-xinit mesa xorg-twm xterm  xorg-xclock "${DESKTOP[@]}" ${DISPLAY_MGR[dm]} firefox )
 
 ## These are your specific choices for fonts and wallpapers and X-related goodies
-EXTRA_X1=( adobe-source-code-pro-fonts cantarell-fonts gnu-free-fonts noto-fonts breeze-gtk breeze-icons gtk-engine-murrine oxygen-icons ) 
+EXTRA_X1=(  arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme ) 
 
-EXTRA_X2=( xcursor-themes adapta-gtk-theme arc-gtk-theme elementary-icon-theme faenza-icon-theme gnome-icon-theme-extras arc-icon-theme lightdm-gtk-greeter-settings lightdm-webkit-theme-litarvan ) 
+EXTRA_X2=( lightdm-gtk-greeter-settings lightdm-webkit-theme-litarvan ) 
 
-EXTRA_X3=( mate-icon-theme materia-gtk-theme papirus-icon-theme xcursor-bluecurve xcursor-premium archlinux-wallpaper deepin-community-wallpapers deepin-wallpapers elementary-wallpapers )
+EXTRA_X3=( papirus-icon-theme archlinux-wallpaper )
 
-EXTRA_DESKTOPS=( mate mate-extra xfce4 xfce4-goodies i3-gaps i3status i3blocks nitrogen feh rofi dmenu terminator ttf-font-awesome ttf-ionicons )
+EXTRA_DESKTOPS=( xfce4 xfce4-goodies  )
 
 GOODIES=( htop neofetch screenfetch powerline powerline-fonts powerline-vim )
 
 ## -----------  Some of these are included, but it's all up to you...
 xfce_desktop=( xfce4 xfce4-goodies )
 
-#mate_desktop=( mate mate-extra )
-
-#i3gaps_desktop=( i3-gaps dmenu feh rofi i3status i3blocks nitrogen i3status ttf-font-awesome ttf-ionicons )
-
-#qtile_desktop=( qtile dmenu feh rofi nitrogen ttf-font-awesome ttf-ionicons "${multimedia_stuff[@]}" )
-
-#xmonad_desktop=( xmonad xmonad-contrib )
-
-#awesome_desktop=( awesome vicious )
-
-#kde_desktop=( plasma plasma-wayland-session kde-applications )
-
 ## Python3 should be installed by default
 devel_stuff=( git nodejs npm npm-check-updates ruby )
 
 printing_stuff=( system-config-printer foomatic-db foomatic-db-engine gutenprint cups cups-pdf cups-filters cups-pk-helper ghostscript gsfonts )
 
-multimedia_stuff=( brasero sox eog shotwell imagemagick cmus mpg123 alsa-utils cheese )
+multimedia_stuff=( gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-google ntfs-3g mtools base-devel)
 
-all_pkgs=( BASE_SYSTEM BASIC_X EXTRA_X1 EXTRA_X2 EXTRA_X3 EXTRA_DESKTOPS GOODIES xfce_desktop mate_desktop i3gaps_desktop devel_stuff printing_stuff multimedia_stuff qtile_desktop xmonad_desktop awesome_desktop kde_desktop)
+all_pkgs=( BASE_SYSTEM BASIC_X EXTRA_X1 EXTRA_X2 EXTRA_X3 EXTRA_DESKTOPS GOODIES xfce_desktop )
 
 ##########################################
 ######       FUNCTIONS       #############
