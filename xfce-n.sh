@@ -95,11 +95,7 @@ EOF
 
 sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 
-#-------------pikaur--------------------------
-git clone https://aur.archlinux.org/pikaur.git
-cd pikaur/
-makepkg -si --noconfirm
-----------------------------------------------
+#----------------------------------------------
 
 cd .. && rm -rf Arch-xfce
 
