@@ -3,7 +3,7 @@
 ## ----Reflector----
 
 pacman -Sy
-pacman -S reflector --noconfirm
+pacman -S reflector intel-ucode --noconfirm
 
 reflector --verbose --country 'Poland' -l 6 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
@@ -71,7 +71,7 @@ pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper pa
 
 pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant rsync --noconfirm
 
-pacman -S intel-ucode libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils iwd nomacs  --noconfirm
+pacman -S libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils iwd nomacs  --noconfirm
 
 systemctl enable fstrim.timer
 systemctl enable reflector.timer
