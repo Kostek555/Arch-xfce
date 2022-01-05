@@ -22,14 +22,9 @@ ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc --utc
 timedatectl set-ntp true
 
-# --------Grub---------------------
-pacman -S grub  --noconfirm
-grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-
 #--------Xorg----------------------
 
-pacman -S xorg-server xorg-apps xorg-xinit --noconfirm 
+pacman -S xorg-server xorg-apps xorg-xinit xorg-xclock xorg-twm xterm --noconfirm 
 
 #----------------Video-intel-----------------------------------------
 
@@ -57,7 +52,7 @@ pacman -S gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-go
 
 #---------Lightdm--------------
 
-pacman -S  lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
+pacman -S  lightdm lightdm-gtk-greeter-settings lightdm-webkit-theme-litarvan --noconfirm
 
 systemctl enable lightdm
 
@@ -69,7 +64,7 @@ systemctl enable NetworkManager
 
 #-----------Xfce------------------
 
-pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa file-roller unrar p7zip unace lrzip arch-install-scripts --noconfirm
+pacman -S xfce4 xfce4-goodies pipewire pipewire-pulse file-roller unrar p7zip unace lrzip arch-install-scripts --noconfirm
 
 pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call terminus-font ttf-inconsolata util-linux --noconfirm
 
@@ -100,10 +95,6 @@ EOF
 # SUDO
 
 sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
-
-#----------------------------------------------
-
-cd .. && rm -rf Arch-xfce
 
 
 printf "\e[1;32mDone! Type exit, umount -R /mnt and reboot.\e[0m"
