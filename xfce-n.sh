@@ -3,7 +3,7 @@
 ## ----Reflector----
 
 pacman -Sy
-pacman -S reflector intel-ucode --noconfirm
+pacman -S reflector  --noconfirm
 
 reflector --verbose --country 'Poland' -l 6 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
@@ -43,7 +43,7 @@ EndSection
 EOF
 
 #----
-mkinitcpio -P
+mkinitcpio -p linux
 
 #----------System---------------
 
@@ -51,27 +51,27 @@ pacman -S gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-go
 
 #---------Lightdm--------------
 
-pacman -S  lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm
+pacman -S  lightdm lightdm-gtk-greeter-settings lightdm-webkit-theme-litarvan --noconfirm
 
 systemctl enable lightdm
 
 #--------Network------------------
 
-pacman -S networkmanager network-manager-applet --noconfirm
+pacman -S networkmanager network-manager-applet networkmanager-openvpn --noconfirm
 
 systemctl enable NetworkManager
 
 #-----------Xfce------------------
 
-pacman -S xfce4 xfce4-goodies pavucontrol pulseaudio-alsa file-roller unrar p7zip unace lrzip arch-install-scripts --noconfirm
+pacman -S xfce4 xfce4-goodies pipewire pipewire-pulse file-roller unrar p7zip unace lrzip arch-install-scripts --noconfirm
 
 pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call terminus-font ttf-inconsolata util-linux --noconfirm
 
-pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme leafpad jre-openjdk jdk-openjdk sudo chromium net-tools --noconfirm
+pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme leafpad jre-openjdk jdk-openjdk sudo firefox-i18n-pl net-tools --noconfirm
 
-pacman -S file-roller unrar p7zip unace lrzip mtools gparted youtube-dl dialog wpa_supplicant rsync --noconfirm
+pacman -S file-roller unrar p7zip unace lrzip mtools gparted dialog wpa_supplicant rsync --noconfirm
 
-pacman -S libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils iwd nomacs  --noconfirm
+pacman -S libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils nomacs  --noconfirm
 
 systemctl enable fstrim.timer
 systemctl enable reflector.timer
@@ -95,9 +95,6 @@ EOF
 
 sed -i -- 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 
-#----------------------------------------------
-
-cd .. && rm -rf Arch-xfce
 
 
 printf "\e[1;32mDone! Type exit, umount -R /mnt and reboot.\e[0m"
