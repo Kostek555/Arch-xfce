@@ -69,9 +69,9 @@ pacman -S bash-completion dosfstools xdg-user-dirs xdg-utils acpi acpi_call term
 
 pacman -S arc-gtk-theme arc-icon-theme gtk-engine-murrine archlinux-wallpaper papirus-icon-theme leafpad jre-openjdk jdk-openjdk sudo firefox-i18n-pl net-tools --noconfirm
 
-pacman -S file-roller unrar p7zip unace lrzip mtools gparted dialog wpa_supplicant rsync --noconfirm
+pacman -S file-roller unrar p7zip unace lrzip mtools gparted dialog wpa_supplicant rsync meld --noconfirm
 
-pacman -S libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils nomacs  --noconfirm
+pacman -S libreoffice-fresh-pl hunspell-pl gnome-calculator dnsutils nomacs  neofetch --noconfirm
 
 systemctl enable fstrim.timer
 systemctl enable reflector.timer
